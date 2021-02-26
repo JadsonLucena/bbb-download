@@ -51,8 +51,11 @@ def extract_timings(bbb_version):
             path = u'/usr/local/bigbluebutton/core/scripts/logo.png'
             j += 1
 
+        if not (image.hasAttribute('in') and image.hasAttribute('out')):
+            continue
+
         in_times = str(image.getAttribute('in')).split(' ')
-        out_times = image.getAttribute('out').split(' ')
+        out_times = str(image.getAttribute('out')).split(' ')
 
         temp = float(out_times[len(out_times) - 1])
         if temp > total_length:
